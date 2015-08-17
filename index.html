@@ -299,6 +299,238 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/07/18/04-gitde-yong-fa/">04-git的用法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-07-18T02:38:14+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:38 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="mf">01.</span> <span class="n">GIT</span><span class="err">简介</span><span class="p">(</span><span class="n">PPT</span><span class="p">)</span>
+</span><span class='line'><span class="o">================================================================================</span>
+</span><span class='line'>
+</span><span class='line'><span class="mf">02.</span> <span class="n">GIT</span><span class="err">命令行帮助</span>
+</span><span class='line'><span class="o">================================================================================</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">help</span>
+</span><span class='line'><span class="err">查看</span><span class="n">git</span><span class="err">所有命令的帮助</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">help</span> <span class="err">子命令</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp"># 要退出帮助信息，按&quot;q&quot;</span>
+</span><span class='line'><span class="cp"># 翻看下页，按&quot;空格&quot;</span>
+</span><span class='line'><span class="cp"># 翻看上页，按&quot;CTRL+B&quot;</span>
+</span><span class='line'><span class="cp"># 要搜索相关文字，按&quot;/&quot;然后输入&quot;相关文字&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="mf">03.</span> <span class="err">创建代码库</span> <span class="o">&amp;</span> <span class="err">配置个人信息</span>
+</span><span class='line'><span class="o">================================================================================</span>
+</span><span class='line'><span class="mi">1</span><span class="o">&gt;</span>  <span class="err">创建代码仓库</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">init</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">2</span><span class="o">&gt;</span>  <span class="err">配置用户名和邮箱</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="n">manager</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="n">manager</span><span class="p">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span> <span class="err">以上两个命令会将用户信息保存在当前代码仓库中</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">3</span><span class="o">&gt;</span>  <span class="err">如果要一次性配置完成可以使用一下命令</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="n">manager</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="n">manager</span><span class="p">@</span><span class="n">gmail</span><span class="p">.</span><span class="n">com</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span> <span class="err">以上两个命令会将用户信息保存在用户目录下的</span> <span class="p">.</span><span class="n">gitconfig</span> <span class="err">文件中</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">4</span><span class="o">&gt;</span>  <span class="err">查看当前所有配置</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="o">-</span><span class="n">l</span>
+</span><span class='line'>
+</span><span class='line'><span class="mf">04.</span> <span class="err">实际开发</span>
+</span><span class='line'><span class="o">================================================================================</span>
+</span><span class='line'><span class="mi">1</span><span class="o">&gt;</span>  <span class="err">创建代码，开始开发</span>
+</span><span class='line'><span class="err">$</span> <span class="n">touch</span> <span class="n">main</span><span class="p">.</span><span class="n">c</span>
+</span><span class='line'><span class="err">$</span> <span class="n">open</span> <span class="n">main</span><span class="p">.</span><span class="n">c</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">2</span><span class="o">&gt;</span>  <span class="err">将代码添加到代码库</span>
+</span><span class='line'><span class="cp"># 查看当前代码库状态</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">status</span>
+</span><span class='line'><span class="cp"># 将文件添加到代码库</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">main</span><span class="p">.</span><span class="n">c</span>
+</span><span class='line'><span class="cp"># 将修改提交到代码库</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;添加了main.c&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">提示：</span>
+</span><span class='line'><span class="o">*</span>   <span class="err">在此一定要使用</span> <span class="o">-</span><span class="n">m</span> <span class="err">参数指定修改的备注信息</span>
+</span><span class='line'><span class="o">*</span>   <span class="err">否则会进入</span> <span class="n">vim</span> <span class="err">编辑器，如果对</span><span class="n">vim</span><span class="err">不熟悉，会是很糟糕的事情</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp"># 将当前文件夹下的所有新建或修改的文件一次性添加到代码库</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">3</span><span class="o">&gt;</span>  <span class="err">添加多个文件</span>
+</span><span class='line'><span class="err">$</span> <span class="n">touch</span> <span class="n">Person</span><span class="p">.</span><span class="n">h</span> <span class="n">Person</span><span class="p">.</span><span class="n">m</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;添加了Person类&quot;</span>
+</span><span class='line'><span class="err">$</span> <span class="n">open</span> <span class="n">Person</span><span class="p">.</span><span class="n">h</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;增加Person类属性&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">*</span> <span class="err">注意</span> <span class="err">使用</span><span class="n">git</span><span class="err">时，每一次修改都需要添加再提交，这一点是与</span><span class="n">svn</span><span class="err">不一样的</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">git</span> <span class="err">的重要概念及工作原理</span>
+</span><span class='line'><span class="o">--------------------------------------------------------------------------------</span>
+</span><span class='line'><span class="err">工作区</span>
+</span><span class='line'><span class="err">暂存区</span><span class="p">(</span><span class="n">staged</span><span class="p">)</span>
+</span><span class='line'><span class="err">分支</span><span class="p">(</span><span class="n">HEAD</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="mf">05.</span> <span class="err">别名</span> <span class="o">&amp;</span> <span class="err">日志</span>
+</span><span class='line'><span class="o">================================================================================</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="n">alias</span><span class="p">.</span><span class="n">st</span> <span class="n">status</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">config</span> <span class="n">alias</span><span class="p">.</span><span class="n">ci</span> <span class="s">&quot;commit -m&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">除非特殊原因，最好不要设置别名，否则换一台机器就不会用了</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp"># 查看所有版本库日志</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">log</span>
+</span><span class='line'><span class="cp"># 查看指定文件的版本库日志</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">log</span> <span class="err">文件名</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp"># 配置带颜色的log别名</span>
+</span><span class='line'><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">global</span> <span class="n">alias</span><span class="p">.</span><span class="n">lg</span> <span class="s">&quot;log --color --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#39; --abbrev-commit&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">提示：在</span><span class="n">git</span><span class="err">中，版本号是一个由</span><span class="n">SHA1</span><span class="err">生成的哈希值</span>
+</span><span class='line'>
+</span><span class='line'><span class="mf">06.</span> <span class="err">版本号，让我们在任意版本之间穿梭</span>
+</span><span class='line'><span class="o">================================================================================</span>
+</span><span class='line'><span class="cp"># 回到当前版本，放弃所有没有提交的修改</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">HEAD</span>
+</span><span class='line'><span class="cp"># 回到上一个版本</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">HEAD</span><span class="o">^</span>
+</span><span class='line'><span class="cp"># 回到之前第3个修订版本</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">HEAD</span><span class="o">~</span><span class="mi">3</span>
+</span><span class='line'><span class="cp"># 回到指定版本号的版本</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">e695b67</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp"># 查看分支引用记录</span>
+</span><span class='line'><span class="err">$</span> <span class="n">git</span> <span class="n">reflog</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/">01-关于alloc和init嵌套调用</a></h1>
     
     
@@ -469,6 +701,10 @@
     
       <li class="post">
         <a href="/blog/2013/07/21/di-er-pian-bo-ke/">01-KVC机制</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/07/18/04-gitde-yong-fa/">04-git的用法</a>
       </li>
     
       <li class="post">

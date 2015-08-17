@@ -4,7 +4,7 @@
   <title><![CDATA[Cara的ios]]></title>
   <link href="http://cararila.github.io/atom.xml" rel="self"/>
   <link href="http://cararila.github.io/"/>
-  <updated>2015-08-17T19:29:09+08:00</updated>
+  <updated>2015-08-18T01:32:08+08:00</updated>
   <id>http://cararila.github.io/</id>
   <author>
     <name><![CDATA[QQ917314919]]></name>
@@ -189,6 +189,104 @@
 
 
 <p>2、初始化（init）方法返回的对象可能与分配（alloc）的对象不同。比如类簇中的NSString和NSArray等，实际上是一群隐藏在通用接口之下的与实现相关的类，创建NSString对象时，实际获得的可能是NSLiteralString、NSCFString、NSSimpleCString、NSBallOfString或者其他未写入文档的与实现相关的对象。由于init方法可以接受参数，所以该方法的代码能够检查其接受的参数的值，并判断返回另一个类的对象可能更合适。基于这种一认知，字符串初始化函数可能决定创建一个属于其他类的对象（该对象更适合被期望的字符串的要求），然后返回该对象而不是原来的对象。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[03-block的用法]]></title>
+    <link href="http://cararila.github.io/blog/2013/06/26/03-blockde-yong-fa/"/>
+    <updated>2013-06-26T01:31:24+08:00</updated>
+    <id>http://cararila.github.io/blog/2013/06/26/03-blockde-yong-fa</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="n">block</span> <span class="err">是</span> <span class="n">Apple</span> <span class="err">在</span> <span class="n">GCC</span> <span class="mf">4.2</span> <span class="err">中扩充的新语法特性，其目的是支持多核并行编程。我们可以将</span> <span class="n">dispatch_queue</span> <span class="err">与</span> <span class="n">block</span> <span class="err">结合起来使用，方便进行多线程编程。</span>
+</span><span class='line'>
+</span><span class='line'><span class="mi">1</span><span class="err">，实验工程准备</span>
+</span><span class='line'><span class="err">在</span> <span class="n">XCode</span> <span class="mf">4.0</span> <span class="err">中，我们建立一个</span> <span class="n">Mac</span> <span class="n">OS</span> <span class="n">X</span> <span class="n">Application</span> <span class="err">类型的</span> <span class="n">Command</span> <span class="n">Line</span> <span class="n">Tool</span><span class="err">，在</span> <span class="n">Type</span> <span class="err">里面我们选择</span> <span class="n">Foundation</span> <span class="err">就好，工程名字暂且为</span> <span class="n">StudyBlocks</span><span class="p">.</span><span class="err">默认生成的工程代码</span> <span class="n">main</span><span class="p">.</span><span class="n">m</span> <span class="err">内容如下：</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="bp">NSAutoreleasePool</span> <span class="o">*</span> <span class="n">pool</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSAutoreleasePool</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// insert code here</span>
+</span><span class='line'>    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Hello, World!&quot;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">[</span><span class="n">pool</span> <span class="n">drain</span><span class="p">];</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="mi">2</span><span class="err">，如何编写</span> <span class="n">block</span>
+</span><span class='line'><span class="err">在自动生成的工程代码中，默认打印一条语句</span><span class="s">&quot;Hello, World!&quot;</span><span class="err">，这个任务可以不可以用</span> <span class="n">block</span> <span class="err">语法来实现呢？答案是肯定的，请看：</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">aBlock</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Hello, World!&quot;</span><span class="p">);</span> <span class="p">};</span>
+</span><span class='line'>    <span class="n">aBlock</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">用上面的这两行语句替换</span> <span class="n">main</span><span class="p">.</span><span class="n">m</span> <span class="err">中的</span> <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Hello, World!&quot;</span><span class="p">);</span> <span class="err">语句，编译运行，结果是一样的。</span>
+</span><span class='line'><span class="err">这两行语句是什么意思呢？首先，等号左边的</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">aBlock</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="err">表示声明了一个</span> <span class="n">block</span><span class="err">，这个</span> <span class="n">block</span> <span class="err">不带参数</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="err">且也无返回参数</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="err">；等号右边的</span> <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="p">}</span> <span class="err">结构表示一个</span> <span class="n">block</span> <span class="err">的实现体，至于这个</span> <span class="n">block</span> <span class="err">具体要做的事情就都在</span> <span class="p">{}</span> <span class="err">之间了。在这里我们仅仅是打印一条语句。整个语句就是声明一个</span> <span class="n">block</span><span class="err">，并对其赋值。第二个语句就是调用这个</span> <span class="n">block</span> <span class="err">做实际的事情，就像我们调用函数一样。</span><span class="n">block</span> <span class="err">很有点像</span> <span class="n">C</span><span class="o">++</span><span class="mi">0</span><span class="n">X</span> <span class="err">中的</span> <span class="n">Lambda</span> <span class="err">表达式。</span>
+</span><span class='line'><span class="err">我们也可以这么写：</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">aBlock</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">aBlock</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Hello, World!&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">aBlock</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">现在我们知道了一个</span> <span class="n">block</span> <span class="err">该如何编写了，那么</span> <span class="n">block</span> <span class="err">数组呢？也很简单，请看：</span>
+</span><span class='line'>    <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">blocks</span><span class="p">[</span><span class="mi">2</span><span class="p">])(</span><span class="kt">void</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>        <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot; &gt;&gt; This is block 1!&quot;</span><span class="p">);</span> <span class="p">},</span>
+</span><span class='line'>        <span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span> <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot; &gt;&gt; This is block 2!&quot;</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">blocks</span><span class="p">[</span><span class="mi">0</span><span class="p">]();</span>
+</span><span class='line'>    <span class="n">blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">]();</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="err">谨记！</span>
+</span><span class='line'><span class="n">block</span> <span class="err">是分配在</span> <span class="n">stack</span> <span class="err">上的，这意味着我们必须小心里处理</span> <span class="n">block</span> <span class="err">的生命周期。</span>
+</span><span class='line'><span class="err">比如如下的做法是不对的，因为</span> <span class="n">stack</span> <span class="err">分配的</span> <span class="n">block</span> <span class="err">在</span> <span class="k">if</span> <span class="err">或</span> <span class="k">else</span> <span class="err">内是有效的，但是到大括号</span> <span class="p">}</span> <span class="err">退出时就可能无效了：</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

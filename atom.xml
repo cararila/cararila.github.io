@@ -4,7 +4,7 @@
   <title><![CDATA[Cara的ios]]></title>
   <link href="http://cararila.github.io/atom.xml" rel="self"/>
   <link href="http://cararila.github.io/"/>
-  <updated>2015-08-21T03:47:18+08:00</updated>
+  <updated>2015-08-21T03:49:33+08:00</updated>
   <id>http://cararila.github.io/</id>
   <author>
     <name><![CDATA[QQ917314919]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[05-block]]></title>
+    <title type="html"><![CDATA[(Ios)05-block]]></title>
     <link href="http://cararila.github.io/blog/2013/08/21/05-block/"/>
     <updated>2013-08-21T03:23:46+08:00</updated>
     <id>http://cararila.github.io/blog/2013/08/21/05-block</id>
@@ -65,7 +65,7 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[04-git的用法]]></title>
+    <title type="html"><![CDATA[(Ios)04-git的用法]]></title>
     <link href="http://cararila.github.io/blog/2013/07/28/04-gitde-yong-fa/"/>
     <updated>2013-07-28T02:38:14+08:00</updated>
     <id>http://cararila.github.io/blog/2013/07/28/04-gitde-yong-fa</id>
@@ -277,7 +277,7 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[03-block的用法]]></title>
+    <title type="html"><![CDATA[(Ios)03-block的用法]]></title>
     <link href="http://cararila.github.io/blog/2013/07/26/03-blockde-yong-fa/"/>
     <updated>2013-07-26T01:31:24+08:00</updated>
     <id>http://cararila.github.io/blog/2013/07/26/03-blockde-yong-fa</id>
@@ -375,7 +375,7 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[02-KVC机制]]></title>
+    <title type="html"><![CDATA[(ios)02-KVC机制]]></title>
     <link href="http://cararila.github.io/blog/2013/07/21/di-er-pian-bo-ke/"/>
     <updated>2013-07-21T22:51:03+08:00</updated>
     <id>http://cararila.github.io/blog/2013/07/21/di-er-pian-bo-ke</id>
@@ -531,7 +531,7 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[01-关于alloc和init嵌套调用]]></title>
+    <title type="html"><![CDATA[(Ios)01-关于alloc和init嵌套调用]]></title>
     <link href="http://cararila.github.io/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/"/>
     <updated>2013-07-16T01:45:05+08:00</updated>
     <id>http://cararila.github.io/blog/2013/07/16/di-[?]-pian-bo-ke</id>
@@ -554,7 +554,7 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[C语言-01第一个C++程序]]></title>
+    <title type="html"><![CDATA[(C语言)01-第一个C++程序]]></title>
     <link href="http://cararila.github.io/blog/2012/10/19/cyu-yan-01/"/>
     <updated>2012-10-19T03:38:25+08:00</updated>
     <id>http://cararila.github.io/blog/2012/10/19/cyu-yan-01</id>

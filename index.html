@@ -865,9 +865,10 @@
   </header>
 
 
-  <div class="entry-content"><pre><code class="objc">
-退回输入键盘  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height); 设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素
-</code></pre>
+  <div class="entry-content"><h1>退回输入键盘</h1>
+
+<p><code>objc  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height);
+</code>#设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)#设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素</p>
 </div>
   
   

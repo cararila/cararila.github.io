@@ -9,59 +9,13 @@
   <meta name="author" content="QQ917314919">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53 &hellip;">
+  <meta name="description" content="//
+// main.cpp
+// 02-C++特有语法
+//
+// Created by apple on 12-10-19.
+// Copyright &copy; 2012年 cara. All rights reserved.
+// include using namespace std &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -117,6 +71,127 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/20/cyu-yan-02-di-er-ge-cheng-xu/">C语言-02-特有语法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2012-10-20T01:14:45+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>1:14 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>//
+//  main.cpp
+//  02-C++特有语法
+//
+//  Created by apple on 12-10-19.
+//  Copyright &copy; 2012年 cara. All rights reserved.
+//</p>
+
+<h1>include <iostream></h1>
+
+<p>using namespace std;</p>
+
+<h1>pragma mark - 函数重载</h1>
+
+<p>void test()
+{
+    cout &lt;&lt; &ldquo;test函数&rdquo; &lt;&lt; endl;
+}</p>
+
+<p>void test(int a = 10)
+{
+    cout &lt;&lt; &ldquo;test(int) &rdquo; &lt;&lt; a &lt;&lt; endl;
+}</p>
+
+<p>void test(int a = 10, int b = 20)
+{
+    cout &lt;&lt; &ldquo;test(int, int) &rdquo; &lt;&lt; a &lt;&lt; &ldquo;,&rdquo; &lt;&lt; b &lt;&lt; endl;
+}</p>
+
+<p>int main(int argc, const char * argv[])
+{
+    // 下面的2个调用都存在二义性，编译器不清楚要调用哪个函数
+    // test();
+    // test(20);</p>
+
+<p>//    test(20);</p>
+
+<pre><code>return 0;
+</code></pre>
+
+<p>}</p>
+
+<h1>pragma mark - 带有默认形参值的函数</h1>
+
+<p>int sum(int x = 1, int y = 2)
+{
+    cout &lt;&lt; &ldquo;x=&rdquo; &lt;&lt; x &lt;&lt; &ldquo;, y =&rdquo; &lt;&lt; y &lt;&lt; endl;
+    return x + y;
+}</p>
+
+<p>// 系统自带了一个叫做minus的函数</p>
+
+<p>// 原则：如果某个形参没有默认值，那么它左边的参数就不能有默认值
+/<em>
+ int my_minus(int x = 26, int y = 20, int z)
+ {
+ return x - y;
+ }
+ </em>/</p>
+
+<p>// 一定要保证所有的形参有值
+//    int a = sum(10, 9);
+//
+//    cout &lt;&lt; a &lt;&lt; endl;</p>
+
+<h1>pragma mark - 结构体和指针</h1>
+
+<p>void testStruct2()
+{
+    struct Date
+    {
+        int year;
+        int month;
+        int day;</p>
+
+<p>}</p>
+
+<h1>pragma mark - 结构体</h1>
+
+<p>struct Student
+{
+    // 成员变量
+    int age;
+    double height;
+    char name[10];</p>
+
+<p>  };</p>
+
+<p>void testStruct()
+{
+//    Student s = {19};</p>
+
+<p>}</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -319,6 +394,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/10/28/ios33-ji-ben-zhi-shi-zong-jie-04/">Ios33-基本知识总结04</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/22/ios30-ji-ben-zhi-shi-zong-jie-02/">Ios31-基本知识总结02</a>
       </li>
     
@@ -332,10 +411,6 @@
     
       <li class="post">
         <a href="/blog/2013/08/21/05-block/">Ios 05-block</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/28/04-gitde-yong-fa/">Ios 04-git的用法</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Cara的ios]]></title>
   <link href="http://cararila.github.io/atom.xml" rel="self"/>
   <link href="http://cararila.github.io/"/>
-  <updated>2015-08-21T03:35:19+08:00</updated>
+  <updated>2015-08-21T03:47:18+08:00</updated>
   <id>http://cararila.github.io/</id>
   <author>
     <name><![CDATA[QQ917314919]]></name>
@@ -550,6 +550,172 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
 
 
 <p>2、初始化（init）方法返回的对象可能与分配（alloc）的对象不同。比如类簇中的NSString和NSArray等，实际上是一群隐藏在通用接口之下的与实现相关的类，创建NSString对象时，实际获得的可能是NSLiteralString、NSCFString、NSSimpleCString、NSBallOfString或者其他未写入文档的与实现相关的对象。由于init方法可以接受参数，所以该方法的代码能够检查其接受的参数的值，并判断返回另一个类的对象可能更合适。基于这种一认知，字符串初始化函数可能决定创建一个属于其他类的对象（该对象更适合被期望的字符串的要求），然后返回该对象而不是原来的对象。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C语言-01第一个C++程序]]></title>
+    <link href="http://cararila.github.io/blog/2012/10/19/cyu-yan-01/"/>
+    <updated>2012-10-19T03:38:25+08:00</updated>
+    <id>http://cararila.github.io/blog/2012/10/19/cyu-yan-01</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">//</span>
+</span><span class='line'><span class="c1">//  main.cpp</span>
+</span><span class='line'><span class="c1">//  01-第一个C++程序</span>
+</span><span class='line'><span class="c1">//</span>
+</span><span class='line'><span class="c1">//  Created by apple on 12-10-18.</span>
+</span><span class='line'><span class="c1">//  Copyright (c) 2012年 cara. All rights reserved.</span>
+</span><span class='line'><span class="c1">//</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// C++自带的标准头文件都是没有.h的</span>
+</span><span class='line'><span class="c1">// 就相当于C语言的&lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// 提前使用命名空间std</span>
+</span><span class='line'><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// cin 接收键盘的输入</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">double</span> <span class="n">height</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入年龄：&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">age</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入身高：&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">height</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入姓名：&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">name</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;My age is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">age</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, height is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">height</span> <span class="o">&lt;&lt;</span>
+</span><span class='line'>    <span class="s">&quot;, name is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//    printf(&quot;请输入年龄：&quot;);</span>
+</span><span class='line'><span class="c1">//    scanf(&quot;%d&quot;, &amp;age);</span>
+</span><span class='line'><span class="c1">//    </span>
+</span><span class='line'><span class="c1">//    printf(&quot;请输入身高：&quot;);</span>
+</span><span class='line'><span class="c1">//    scanf(&quot;%lf&quot;, &amp;height);</span>
+</span><span class='line'><span class="c1">//    </span>
+</span><span class='line'><span class="c1">//    printf(&quot;请输入姓名：&quot;);</span>
+</span><span class='line'><span class="c1">//    scanf(&quot;%s&quot;, name);</span>
+</span><span class='line'><span class="c1">//    </span>
+</span><span class='line'><span class="c1">//    printf(&quot;My age is %d, height is %f, name is %s\n&quot;, age, height, name);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">testCout</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// 在控制台输出一些信息</span>
+</span><span class='line'>    <span class="c1">// 相当于C语言的printf函数</span>
+</span><span class='line'>    <span class="c1">// 相当于OC的NSLog</span>
+</span><span class='line'>    <span class="c1">//    std::cout &lt;&lt; &quot;Hello, World!\n&quot;;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// endl : end line</span>
+</span><span class='line'>    <span class="c1">// 运算符重载</span>
+</span><span class='line'>    <span class="c1">//    std::cout &lt;&lt; &quot;My age is 20&quot; &lt;&lt; &quot;, height is 1.78&quot; &lt;&lt; std::endl;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">double</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">1.89</span><span class="p">;</span>
+</span><span class='line'>    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;jack&quot;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;My age is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">age</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, height is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">height</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, name is &quot;</span>
+</span><span class='line'>    <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//    printf(&quot;My age is %d, height is %f, name is %s\n&quot;, age, height, name);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//    std::cout &lt;&lt; &quot;My age is &quot; &lt;&lt; age &lt;&lt; &quot;, height is &quot; &lt;&lt; height &lt;&lt; &quot;, name is &quot;</span>
+</span><span class='line'>    <span class="c1">//    &lt;&lt; name &lt;&lt; std::endl;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">// 命名空间</span>
+</span><span class='line'>    <span class="c1">// cout 这个 对象 是定义在 std 命名空间中的</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//    NSString *cout = @&quot;4234324&quot;;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

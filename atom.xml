@@ -4,7 +4,7 @@
   <title><![CDATA[Cara的ios]]></title>
   <link href="http://cararila.github.io/atom.xml" rel="self"/>
   <link href="http://cararila.github.io/"/>
-  <updated>2015-08-21T04:49:08+08:00</updated>
+  <updated>2015-08-21T04:57:47+08:00</updated>
   <id>http://cararila.github.io/</id>
   <author>
     <name><![CDATA[QQ917314919]]></name>
@@ -572,8 +572,52 @@
     <link href="http://cararila.github.io/blog/2014/10/23/ios32-ji-ben-zhi-shi-zong-jie-03/"/>
     <updated>2014-10-23T14:50:25+08:00</updated>
     <id>http://cararila.github.io/blog/2014/10/23/ios32-ji-ben-zhi-shi-zong-jie-03</id>
-    <content type="html"><![CDATA[<pre><code class="objc">定义按钮UIButton *scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@"放 大" forState:UIControlStateNormal];scaleUpButton.frame = CGRectMake(40, 420, 100, 40);[scaleUpButton addTarget:self action:@selector(scaleUp) forControlEvents:UIControlEventTouchUpInside]; 设置视图背景图片UIImageView *aView;[aView setImage:[UIImage imageNamed:@”name.png”]];view1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image1.png"]]; 自定义UISlider的样式和滑块我们使用的是UISlider的setMinimumTrackImage，和setMaximumTrackImage方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在 viewDidLoad中：    //左右轨的图片    UIImage *stetchLeftTrack= [UIImage imageNamed:@"brightness_bar.png"];    UIImage *stetchRightTrack = [UIImage imageNamed:@"brightness_bar.png"];    //滑块图片    UIImage *thumbImage = [UIImage imageNamed:@"mark.png"];        UISlider *sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA];  -(IBAction)sliderValueChanged:(id)sender{UISlider *slider = (UISlider *) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}
-</code></pre>
+    <content type="html"><![CDATA[<p>定义按钮</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="p">-</span> <span class="nf">UIButton</span> <span class="o">*</span><span class="n">scaleUpButton</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIButton</span> <span class="nl">buttonWithType</span><span class="p">:</span><span class="n">UIButtonTypeRoundedRect</span><span class="p">];</span>
+</span><span class='line'><span class="p">[</span><span class="n">scaleUpButton</span> <span class="nl">setTitle</span><span class="p">:</span><span class="s">@&quot;放 大&quot;</span> <span class="nl">forState</span><span class="p">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+</span><span class='line'><span class="n">scaleUpButton</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">420</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+</span><span class='line'><span class="p">[</span><span class="n">scaleUpButton</span> <span class="nl">addTarget</span><span class="p">:</span><span class="nb">self</span>
+</span><span class='line'> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">scaleUp</span><span class="p">)</span>
+</span><span class='line'><span class="nl">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventTouchUpInside</span><span class="p">];</span>
+</span><span class='line'> <span class="err">````</span>
+</span><span class='line'><span class="err">设置视图背景图片</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">```</span><span class="n">objc</span>
+</span><span class='line'><span class="bp">UIImageView</span> <span class="o">*</span><span class="n">aView</span><span class="p">;</span>
+</span><span class='line'><span class="p">[</span><span class="n">aView</span> <span class="nl">setImage</span><span class="p">:[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:@</span><span class="err">”</span><span class="n">name</span><span class="p">.</span><span class="n">png</span><span class="err">”</span><span class="p">]];</span>
+</span><span class='line'><span class="n">view1</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="nl">colorWithPatternImage</span><span class="p">:</span>
+</span><span class='line'><span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;image1.png&quot;</span><span class="p">]];</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'> <span class="err">```</span>
+</span><span class='line'><span class="err">自定义</span><span class="bp">UISlider</span><span class="err">的样式和滑块</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">我们使用的是</span><span class="bp">UISlider</span><span class="err">的</span><span class="n">setMinimumTrackImage</span><span class="err">，和</span><span class="n">setMaximumTrackImage</span><span class="err">方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在</span> <span class="n">viewDidLoad</span><span class="err">中：</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>objc    //左右轨的图片    UIImage <em>stetchLeftTrack= [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    UIImage </em>stetchRightTrack = [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    //滑块图片    UIImage <em>thumbImage = [UIImage imageNamed:@&ldquo;mark.png&rdquo;];        UISlider </em>sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA]; ``` -(IBAction)sliderValueChanged:(id)sender{UISlider <em>slider = (UISlider </em>) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}</p>
 ]]></content>
   </entry>
   
@@ -664,8 +708,10 @@
     <link href="http://cararila.github.io/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01/"/>
     <updated>2014-10-21T13:15:57+08:00</updated>
     <id>http://cararila.github.io/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01</id>
-    <content type="html"><![CDATA[<p>退回输入键盘  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height);
-设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素</p>
+    <content type="html"><![CDATA[<p>退回输入键盘
+<code>objc 输入  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height);
+设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];
+</code>     0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素</p>
 ]]></content>
   </entry>
   

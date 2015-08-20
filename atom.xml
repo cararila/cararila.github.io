@@ -4,7 +4,7 @@
   <title><![CDATA[Cara的ios]]></title>
   <link href="http://cararila.github.io/atom.xml" rel="self"/>
   <link href="http://cararila.github.io/"/>
-  <updated>2015-08-21T04:12:14+08:00</updated>
+  <updated>2015-08-21T04:13:00+08:00</updated>
   <id>http://cararila.github.io/</id>
   <author>
     <name><![CDATA[QQ917314919]]></name>
@@ -747,7 +747,7 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[语言 01-第一个C++程序]]></title>
+    <title type="html"><![CDATA[C语言 01-第一个C++程序]]></title>
     <link href="http://cararila.github.io/blog/2012/10/19/cyu-yan-01/"/>
     <updated>2012-10-19T03:38:25+08:00</updated>
     <id>http://cararila.github.io/blog/2012/10/19/cyu-yan-01</id>

@@ -4,7 +4,7 @@
   <title><![CDATA[Cara的ios]]></title>
   <link href="http://cararila.github.io/atom.xml" rel="self"/>
   <link href="http://cararila.github.io/"/>
-  <updated>2015-08-21T04:17:24+08:00</updated>
+  <updated>2015-08-21T04:19:35+08:00</updated>
   <id>http://cararila.github.io/</id>
   <author>
     <name><![CDATA[QQ917314919]]></name>
@@ -21,6 +21,88 @@
     <content type="html"><![CDATA[<p>```objc</p>
 
 <p>退回输入键盘  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height); 设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ios31-基本知识总结02]]></title>
+    <link href="http://cararila.github.io/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/"/>
+    <updated>2014-08-22T01:18:08+08:00</updated>
+    <id>http://cararila.github.io/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="err">自定义颜色</span>
+</span><span class='line'><span class="bp">UIColor</span> <span class="o">*</span><span class="n">newColor</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIColor</span> <span class="n">alloc</span><span class="p">]</span>
+</span><span class='line'> <span class="nl">initWithRed</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">green</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">blue</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">alpha</span><span class="p">:(</span><span class="kt">float</span><span class="p">)];</span>
+</span><span class='line'>     <span class="mf">0.0</span><span class="o">~</span><span class="mf">1.0</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">竖屏</span>
+</span><span class='line'><span class="mi">320</span><span class="n">X480</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">横屏</span>
+</span><span class='line'><span class="mi">480</span><span class="n">X320</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">状态栏高</span> <span class="p">(</span><span class="err">显示时间和网络状态</span><span class="p">)</span>
+</span><span class='line'><span class="mi">20</span> <span class="err">像素</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">导航栏、工具栏高</span><span class="p">(</span><span class="err">返回</span><span class="p">)</span>
+</span><span class='line'><span class="mi">44</span><span class="err">像素</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">隐藏状态栏</span>
+</span><span class='line'><span class="p">[[</span><span class="bp">UIApplication</span> <span class="n">shareApplication</span><span class="p">]</span> <span class="nl">setStatusBarHidden</span><span class="p">:</span> <span class="nb">YES</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">NO</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">横屏</span>
+</span><span class='line'><span class="p">[[</span><span class="bp">UIApplication</span> <span class="n">shareApplication</span><span class="p">]</span>
+</span><span class='line'><span class="nl">setStatusBarOrientation</span><span class="p">:</span><span class="n">UIInterfaceOrientationLandscapeRight</span><span class="p">].</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">屏幕变动检测</span>
+</span><span class='line'><span class="n">orientation</span> <span class="o">==</span> <span class="n">UIInterfaceOrientationLandscapeLeft</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">全屏</span>
+</span><span class='line'><span class="n">window</span><span class="o">=</span><span class="p">[[</span><span class="bp">UIWindow</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:[</span><span class="bp">UIScreen</span> <span class="n">mainScreen</span><span class="p">]</span> <span class="n">bounds</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">自动适应父视图大小：</span>
+</span><span class='line'><span class="n">aView</span><span class="p">.</span><span class="n">autoresizingSubviews</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="n">aView</span><span class="p">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIViewAutoresizingFlexibleWidth</span> <span class="o">|</span>
+</span><span class='line'>                     <span class="n">UIViewAutoresizingFlexibleHeight</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>                  
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

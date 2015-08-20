@@ -102,6 +102,108 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/">Ios31-基本知识总结02</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-22T01:18:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>1:18 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="err">自定义颜色</span>
+</span><span class='line'><span class="bp">UIColor</span> <span class="o">*</span><span class="n">newColor</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIColor</span> <span class="n">alloc</span><span class="p">]</span>
+</span><span class='line'> <span class="nl">initWithRed</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">green</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">blue</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">alpha</span><span class="p">:(</span><span class="kt">float</span><span class="p">)];</span>
+</span><span class='line'>     <span class="mf">0.0</span><span class="o">~</span><span class="mf">1.0</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">竖屏</span>
+</span><span class='line'><span class="mi">320</span><span class="n">X480</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">横屏</span>
+</span><span class='line'><span class="mi">480</span><span class="n">X320</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">状态栏高</span> <span class="p">(</span><span class="err">显示时间和网络状态</span><span class="p">)</span>
+</span><span class='line'><span class="mi">20</span> <span class="err">像素</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">导航栏、工具栏高</span><span class="p">(</span><span class="err">返回</span><span class="p">)</span>
+</span><span class='line'><span class="mi">44</span><span class="err">像素</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">隐藏状态栏</span>
+</span><span class='line'><span class="p">[[</span><span class="bp">UIApplication</span> <span class="n">shareApplication</span><span class="p">]</span> <span class="nl">setStatusBarHidden</span><span class="p">:</span> <span class="nb">YES</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">NO</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">横屏</span>
+</span><span class='line'><span class="p">[[</span><span class="bp">UIApplication</span> <span class="n">shareApplication</span><span class="p">]</span>
+</span><span class='line'><span class="nl">setStatusBarOrientation</span><span class="p">:</span><span class="n">UIInterfaceOrientationLandscapeRight</span><span class="p">].</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">屏幕变动检测</span>
+</span><span class='line'><span class="n">orientation</span> <span class="o">==</span> <span class="n">UIInterfaceOrientationLandscapeLeft</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">全屏</span>
+</span><span class='line'><span class="n">window</span><span class="o">=</span><span class="p">[[</span><span class="bp">UIWindow</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:[</span><span class="bp">UIScreen</span> <span class="n">mainScreen</span><span class="p">]</span> <span class="n">bounds</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">自动适应父视图大小：</span>
+</span><span class='line'><span class="n">aView</span><span class="p">.</span><span class="n">autoresizingSubviews</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="n">aView</span><span class="p">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIViewAutoresizingFlexibleWidth</span> <span class="o">|</span>
+</span><span class='line'>                     <span class="n">UIViewAutoresizingFlexibleHeight</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>                  
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/08/21/05-block/">Ios 05-block</a></h1>
     
     
@@ -1173,6 +1275,10 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
       </li>
     
       <li class="post">
+        <a href="/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/">Ios31-基本知识总结02</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/08/21/05-block/">Ios 05-block</a>
       </li>
     
@@ -1182,10 +1288,6 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
     
       <li class="post">
         <a href="/blog/2013/07/26/03-blockde-yong-fa/">Ios 03-block的用法</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/21/di-er-pian-bo-ke/">Ios 02-KVC机制</a>
       </li>
     
   </ul>

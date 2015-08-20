@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>C语言03-extern - Cara的ios</title>
+  <title>Ios31-基本知识总结02 - Cara的ios</title>
   <meta name="author" content="QQ917314919">
 
   
@@ -45,14 +45,8 @@
 34
 35
 36
-37
-38
-39
-40
-41
-#include &lt;iostream&gt;
-/*
-extern &hellip;">
+自定义颜色
+UIColor *newColor = [[UIColor alloc] &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -61,7 +55,7 @@ extern &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://cararila.github.io/blog/2012/11/21/cyu-yan-03-extern/">
+  <link rel="canonical" href="http://cararila.github.io/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Cara的ios" type="application/atom+xml">
@@ -111,7 +105,7 @@ extern &hellip;">
   
   <header>
     
-      <h1 class="entry-title">C语言03-extern</h1>
+      <h1 class="entry-title">Ios31-基本知识总结02</h1>
     
     
       <p class="meta">
@@ -120,7 +114,7 @@ extern &hellip;">
 
 
 
-<time class='entry-date' datetime='2012-11-21T04:04:05+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>4:04 am</span></time>
+<time class='entry-date' datetime='2014-08-22T01:18:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>1:18 am</span></time>
         
       </p>
     
@@ -163,52 +157,42 @@ extern &hellip;">
 <span class='line-number'>34</span>
 <span class='line-number'>35</span>
 <span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
-</span><span class='line'><span class="cm">/*</span>
-</span><span class='line'><span class="cm">extern &quot;C&quot;的作用：</span>
-</span><span class='line'><span class="cm"> 1.能够实现C\C++混合编程，实现C\C++之间的函数互调</span>
-</span><span class='line'><span class="cm"> </span>
-</span><span class='line'><span class="cm"> 2.使用场合</span>
-</span><span class='line'><span class="cm"> 1&gt; 在.cpp\.cc文件中包含C语言的头文件</span>
-</span><span class='line'><span class="cm"> extern &quot;C&quot;</span>
-</span><span class='line'><span class="cm"> {</span>
-</span><span class='line'><span class="cm">    #include &quot;zs.h&quot;</span>
-</span><span class='line'><span class="cm"> }</span>
-</span><span class='line'><span class="cm"> */</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="err">自定义颜色</span>
+</span><span class='line'><span class="bp">UIColor</span> <span class="o">*</span><span class="n">newColor</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIColor</span> <span class="n">alloc</span><span class="p">]</span>
+</span><span class='line'> <span class="nl">initWithRed</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">green</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">blue</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span> <span class="nl">alpha</span><span class="p">:(</span><span class="kt">float</span><span class="p">)];</span>
+</span><span class='line'>     <span class="mf">0.0</span><span class="o">~</span><span class="mf">1.0</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">//#include &quot;zs.h&quot;</span>
-</span><span class='line'><span class="c1">//int sum(int, int); // 默认情况下，C++会认为当前函数的名称是sum(int,int)</span>
+</span><span class='line'><span class="err">竖屏</span>
+</span><span class='line'><span class="mi">320</span><span class="n">X480</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">// extern &quot;C&quot; 告诉编译器 按照 C语言的方式去编译函数（不会实行名字改编机制）</span>
-</span><span class='line'><span class="c1">//extern &quot;C&quot; int sum(int, int);</span>
-</span><span class='line'><span class="c1">//extern &quot;C&quot; int my_minus(int, int);</span>
+</span><span class='line'><span class="err">横屏</span>
+</span><span class='line'><span class="mi">480</span><span class="n">X320</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">extern</span> <span class="s">&quot;C&quot;</span>
-</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="err">状态栏高</span> <span class="p">(</span><span class="err">显示时间和网络状态</span><span class="p">)</span>
+</span><span class='line'><span class="mi">20</span> <span class="err">像素</span>
 </span><span class='line'>
-</span><span class='line'><span class="cp">#include &quot;zs.h&quot;</span>
-</span><span class='line'><span class="c1">//    int sum(int, int);</span>
-</span><span class='line'><span class="c1">//    int my_minus(int, int);</span>
-</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="err">导航栏、工具栏高</span><span class="p">(</span><span class="err">返回</span><span class="p">)</span>
+</span><span class='line'><span class="mi">44</span><span class="err">像素</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'><span class="err">隐藏状态栏</span>
+</span><span class='line'><span class="p">[[</span><span class="bp">UIApplication</span> <span class="n">shareApplication</span><span class="p">]</span> <span class="nl">setStatusBarHidden</span><span class="p">:</span> <span class="nb">YES</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">NO</span><span class="p">]</span>
 </span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
-</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="err">横屏</span>
+</span><span class='line'><span class="p">[[</span><span class="bp">UIApplication</span> <span class="n">shareApplication</span><span class="p">]</span>
+</span><span class='line'><span class="nl">setStatusBarOrientation</span><span class="p">:</span><span class="n">UIInterfaceOrientationLandscapeRight</span><span class="p">].</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">//    int c = sum(10, 12); // _sum</span>
+</span><span class='line'><span class="err">屏幕变动检测</span>
+</span><span class='line'><span class="n">orientation</span> <span class="o">==</span> <span class="n">UIInterfaceOrientationLandscapeLeft</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">my_minus</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+</span><span class='line'><span class="err">全屏</span>
+</span><span class='line'><span class="n">window</span><span class="o">=</span><span class="p">[[</span><span class="bp">UIWindow</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:[</span><span class="bp">UIScreen</span> <span class="n">mainScreen</span><span class="p">]</span> <span class="n">bounds</span><span class="p">];</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'><span class="err">自动适应父视图大小：</span>
+</span><span class='line'><span class="n">aView</span><span class="p">.</span><span class="n">autoresizingSubviews</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="n">aView</span><span class="p">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIViewAutoresizingFlexibleWidth</span> <span class="o">|</span>
+</span><span class='line'>                     <span class="n">UIViewAutoresizingFlexibleHeight</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
+</span><span class='line'>                  
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -226,7 +210,7 @@ extern &hellip;">
 
 
 
-<time class='entry-date' datetime='2012-11-21T04:04:05+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>4:04 am</span></time>
+<time class='entry-date' datetime='2014-08-22T01:18:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>1:18 am</span></time>
       
 
 
@@ -234,7 +218,7 @@ extern &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://cararila.github.io/blog/2012/11/21/cyu-yan-03-extern/" data-via="" data-counturl="http://cararila.github.io/blog/2012/11/21/cyu-yan-03-extern/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://cararila.github.io/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/" data-via="" data-counturl="http://cararila.github.io/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/" >Tweet</a>
   
   
   
@@ -243,10 +227,10 @@ extern &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/10/20/cyu-yan-02-di-er-ge-cheng-xu/" title="Previous Post: C语言-02-特有语法">&laquo; C语言-02-特有语法</a>
+        <a class="basic-alignment left" href="/blog/2013/08/21/05-block/" title="Previous Post: ios 05-block">&laquo; ios 05-block</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/" title="Next Post: ios 01-关于alloc和init嵌套调用">ios 01-关于alloc和init嵌套调用 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01/" title="Next Post: ios30-基本知识总结01">ios30-基本知识总结01 &raquo;</a>
       
     </p>
   </footer>

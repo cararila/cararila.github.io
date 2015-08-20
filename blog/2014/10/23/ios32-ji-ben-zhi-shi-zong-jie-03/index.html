@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ios 01-关于alloc和init嵌套调用 - Cara的ios</title>
+  <title>Ios32-基本知识总结03 - Cara的ios</title>
   <meta name="author" content="QQ917314919">
 
   
-  <meta name="description" content="1、关于alloc和init嵌套调用： 我们总是以如下方式嵌套alloc和init调用，为什么？ CExample *example1 = [[CExample alloc] init];
-而不是像下面这样调用 CExample *example2 = [CExample alloc]; [ &hellip;">
+  <meta name="description" content="```objc 定义按钮UIButton scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@&ldquo;放 大&rdquo; forState: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://cararila.github.io/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/">
+  <link rel="canonical" href="http://cararila.github.io/blog/2014/10/23/ios32-ji-ben-zhi-shi-zong-jie-03/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Cara的ios" type="application/atom+xml">
@@ -69,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ios 01-关于alloc和init嵌套调用</h1>
+      <h1 class="entry-title">Ios32-基本知识总结03</h1>
     
     
       <p class="meta">
@@ -78,28 +77,16 @@
 
 
 
-<time class='entry-date' datetime='2013-07-16T01:45:05+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:45 am</span></time>
+<time class='entry-date' datetime='2014-10-23T14:50:25+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:50 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>1、关于alloc和init嵌套调用：</p>
+<div class="entry-content"><p>```objc</p>
 
-<ul>
-<li><p>我们总是以如下方式嵌套alloc和init调用，为什么？</p>
-
-<p> CExample *example1 = [[CExample alloc] init];</p></li>
-<li><p>而不是像下面这样调用</p>
-
-<p>   CExample *example2 = [CExample alloc];</p>
-
-<p>   [example2 init];</p></li>
-</ul>
-
-
-<p>2、初始化（init）方法返回的对象可能与分配（alloc）的对象不同。比如类簇中的NSString和NSArray等，实际上是一群隐藏在通用接口之下的与实现相关的类，创建NSString对象时，实际获得的可能是NSLiteralString、NSCFString、NSSimpleCString、NSBallOfString或者其他未写入文档的与实现相关的对象。由于init方法可以接受参数，所以该方法的代码能够检查其接受的参数的值，并判断返回另一个类的对象可能更合适。基于这种一认知，字符串初始化函数可能决定创建一个属于其他类的对象（该对象更适合被期望的字符串的要求），然后返回该对象而不是原来的对象。</p>
+<h1>定义按钮UIButton <em>scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@&ldquo;放 大&rdquo; forState:UIControlStateNormal];scaleUpButton.frame = CGRectMake(40, 420, 100, 40);[scaleUpButton addTarget:self action:@selector(scaleUp) forControlEvents:UIControlEventTouchUpInside]; #设置视图背景图片UIImageView </em>aView;[aView setImage:[UIImage imageNamed:@”name.png”]];view1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@&ldquo;image1.png&rdquo;]]; 自定义UISlider的样式和滑块我们使用的是UISlider的setMinimumTrackImage，和setMaximumTrackImage方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在 viewDidLoad中：    //左右轨的图片    UIImage <em>stetchLeftTrack= [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    UIImage </em>stetchRightTrack = [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    //滑块图片    UIImage <em>thumbImage = [UIImage imageNamed:@&ldquo;mark.png&rdquo;];        UISlider </em>sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA];  -(IBAction)sliderValueChanged:(id)sender{UISlider <em>slider = (UISlider </em>) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}```</h1>
 </div>
 
 
@@ -115,7 +102,7 @@
 
 
 
-<time class='entry-date' datetime='2013-07-16T01:45:05+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:45 am</span></time>
+<time class='entry-date' datetime='2014-10-23T14:50:25+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:50 pm</span></time>
       
 
 
@@ -123,7 +110,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://cararila.github.io/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/" data-via="" data-counturl="http://cararila.github.io/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://cararila.github.io/blog/2014/10/23/ios32-ji-ben-zhi-shi-zong-jie-03/" data-via="" data-counturl="http://cararila.github.io/blog/2014/10/23/ios32-ji-ben-zhi-shi-zong-jie-03/" >Tweet</a>
   
   
   
@@ -132,10 +119,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/11/21/cyu-yan-03-extern/" title="Previous Post: C语言03-extern">&laquo; C语言03-extern</a>
+        <a class="basic-alignment left" href="/blog/2014/10/22/ios30-ji-ben-zhi-shi-zong-jie-02/" title="Previous Post: ios31-基本知识总结02">&laquo; ios31-基本知识总结02</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/07/21/di-er-pian-bo-ke/" title="Next Post: ios 02-KVC机制">ios 02-KVC机制 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/10/28/ios33-ji-ben-zhi-shi-zong-jie-04/" title="Next Post: ios33-基本知识总结04">ios33-基本知识总结04 &raquo;</a>
       
     </p>
   </footer>

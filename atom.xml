@@ -4,7 +4,7 @@
   <title><![CDATA[Cara的ios]]></title>
   <link href="http://cararila.github.io/atom.xml" rel="self"/>
   <link href="http://cararila.github.io/"/>
-  <updated>2015-08-21T04:04:53+08:00</updated>
+  <updated>2015-08-21T04:07:43+08:00</updated>
   <id>http://cararila.github.io/</id>
   <author>
     <name><![CDATA[QQ917314919]]></name>
@@ -646,6 +646,107 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[C语言-02-特有语法]]></title>
+    <link href="http://cararila.github.io/blog/2012/10/20/cyu-yan-02-di-er-ge-cheng-xu/"/>
+    <updated>2012-10-20T01:14:45+08:00</updated>
+    <id>http://cararila.github.io/blog/2012/10/20/cyu-yan-02-di-er-ge-cheng-xu</id>
+    <content type="html"><![CDATA[<p>//
+//  main.cpp
+//  02-C++特有语法
+//
+//  Created by apple on 12-10-19.
+//  Copyright &copy; 2012年 cara. All rights reserved.
+//</p>
+
+<h1>include <iostream></h1>
+
+<p>using namespace std;</p>
+
+<h1>pragma mark - 函数重载</h1>
+
+<p>void test()
+{
+    cout &lt;&lt; &ldquo;test函数&rdquo; &lt;&lt; endl;
+}</p>
+
+<p>void test(int a = 10)
+{
+    cout &lt;&lt; &ldquo;test(int) &rdquo; &lt;&lt; a &lt;&lt; endl;
+}</p>
+
+<p>void test(int a = 10, int b = 20)
+{
+    cout &lt;&lt; &ldquo;test(int, int) &rdquo; &lt;&lt; a &lt;&lt; &ldquo;,&rdquo; &lt;&lt; b &lt;&lt; endl;
+}</p>
+
+<p>int main(int argc, const char * argv[])
+{
+    // 下面的2个调用都存在二义性，编译器不清楚要调用哪个函数
+    // test();
+    // test(20);</p>
+
+<p>//    test(20);</p>
+
+<pre><code>return 0;
+</code></pre>
+
+<p>}</p>
+
+<h1>pragma mark - 带有默认形参值的函数</h1>
+
+<p>int sum(int x = 1, int y = 2)
+{
+    cout &lt;&lt; &ldquo;x=&rdquo; &lt;&lt; x &lt;&lt; &ldquo;, y =&rdquo; &lt;&lt; y &lt;&lt; endl;
+    return x + y;
+}</p>
+
+<p>// 系统自带了一个叫做minus的函数</p>
+
+<p>// 原则：如果某个形参没有默认值，那么它左边的参数就不能有默认值
+/<em>
+ int my_minus(int x = 26, int y = 20, int z)
+ {
+ return x - y;
+ }
+ </em>/</p>
+
+<p>// 一定要保证所有的形参有值
+//    int a = sum(10, 9);
+//
+//    cout &lt;&lt; a &lt;&lt; endl;</p>
+
+<h1>pragma mark - 结构体和指针</h1>
+
+<p>void testStruct2()
+{
+    struct Date
+    {
+        int year;
+        int month;
+        int day;</p>
+
+<p>}</p>
+
+<h1>pragma mark - 结构体</h1>
+
+<p>struct Student
+{
+    // 成员变量
+    int age;
+    double height;
+    char name[10];</p>
+
+<p>  };</p>
+
+<p>void testStruct()
+{
+//    Student s = {19};</p>
+
+<p>}</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[语言 01-第一个C++程序]]></title>
     <link href="http://cararila.github.io/blog/2012/10/19/cyu-yan-01/"/>
     <updated>2012-10-19T03:38:25+08:00</updated>
@@ -808,107 +909,6 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[C语言-02-特有语法]]></title>
-    <link href="http://cararila.github.io/blog/2012/10/19/cyu-yan-02-di-er-ge-cheng-xu/"/>
-    <updated>2012-10-19T01:14:45+08:00</updated>
-    <id>http://cararila.github.io/blog/2012/10/19/cyu-yan-02-di-er-ge-cheng-xu</id>
-    <content type="html"><![CDATA[<p>//
-//  main.cpp
-//  02-C++特有语法
-//
-//  Created by apple on 12-10-19.
-//  Copyright &copy; 2012年 cara. All rights reserved.
-//</p>
-
-<h1>include <iostream></h1>
-
-<p>using namespace std;</p>
-
-<h1>pragma mark - 函数重载</h1>
-
-<p>void test()
-{
-    cout &lt;&lt; &ldquo;test函数&rdquo; &lt;&lt; endl;
-}</p>
-
-<p>void test(int a = 10)
-{
-    cout &lt;&lt; &ldquo;test(int) &rdquo; &lt;&lt; a &lt;&lt; endl;
-}</p>
-
-<p>void test(int a = 10, int b = 20)
-{
-    cout &lt;&lt; &ldquo;test(int, int) &rdquo; &lt;&lt; a &lt;&lt; &ldquo;,&rdquo; &lt;&lt; b &lt;&lt; endl;
-}</p>
-
-<p>int main(int argc, const char * argv[])
-{
-    // 下面的2个调用都存在二义性，编译器不清楚要调用哪个函数
-    // test();
-    // test(20);</p>
-
-<p>//    test(20);</p>
-
-<pre><code>return 0;
-</code></pre>
-
-<p>}</p>
-
-<h1>pragma mark - 带有默认形参值的函数</h1>
-
-<p>int sum(int x = 1, int y = 2)
-{
-    cout &lt;&lt; &ldquo;x=&rdquo; &lt;&lt; x &lt;&lt; &ldquo;, y =&rdquo; &lt;&lt; y &lt;&lt; endl;
-    return x + y;
-}</p>
-
-<p>// 系统自带了一个叫做minus的函数</p>
-
-<p>// 原则：如果某个形参没有默认值，那么它左边的参数就不能有默认值
-/<em>
- int my_minus(int x = 26, int y = 20, int z)
- {
- return x - y;
- }
- </em>/</p>
-
-<p>// 一定要保证所有的形参有值
-//    int a = sum(10, 9);
-//
-//    cout &lt;&lt; a &lt;&lt; endl;</p>
-
-<h1>pragma mark - 结构体和指针</h1>
-
-<p>void testStruct2()
-{
-    struct Date
-    {
-        int year;
-        int month;
-        int day;</p>
-
-<p>}</p>
-
-<h1>pragma mark - 结构体</h1>
-
-<p>struct Student
-{
-    // 成员变量
-    int age;
-    double height;
-    char name[10];</p>
-
-<p>  };</p>
-
-<p>void testStruct()
-{
-//    Student s = {19};</p>
-
-<p>}</p>
 ]]></content>
   </entry>
   

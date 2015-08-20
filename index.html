@@ -9,7 +9,7 @@
   <meta name="author" content="QQ917314919">
 
   
-  <meta name="description" content="```objc 退回输入键盘 - (BOOL) textFieldShouldReturn:(id)textField{ [textField resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, &hellip;">
+  <meta name="description" content="#定义按钮UIButton *scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@"放 大" forState:UIControlStateNormal]; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,36 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/10/21/ios32-ji-ben-zhi-shi-zong-jie-03/">Ios32-基本知识总结03</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-21T14:50:25+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>2:50 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code class="objc">#定义按钮UIButton *scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@"放 大" forState:UIControlStateNormal];scaleUpButton.frame = CGRectMake(40, 420, 100, 40);[scaleUpButton addTarget:self action:@selector(scaleUp) forControlEvents:UIControlEventTouchUpInside]; #设置视图背景图片UIImageView *aView;[aView setImage:[UIImage imageNamed:@”name.png”]];view1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image1.png"]]; 自定义UISlider的样式和滑块我们使用的是UISlider的setMinimumTrackImage，和setMaximumTrackImage方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在 viewDidLoad中：    //左右轨的图片    UIImage *stetchLeftTrack= [UIImage imageNamed:@"brightness_bar.png"];    UIImage *stetchRightTrack = [UIImage imageNamed:@"brightness_bar.png"];    //滑块图片    UIImage *thumbImage = [UIImage imageNamed:@"mark.png"];        UISlider *sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA];  -(IBAction)sliderValueChanged:(id)sender{UISlider *slider = (UISlider *) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1072,193 +1102,9 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/19/cyu-yan-01/">C语言 01-第一个C++程序</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-10-19T03:38:25+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>3:38 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="c1">//</span>
-</span><span class='line'><span class="c1">//  main.cpp</span>
-</span><span class='line'><span class="c1">//  01-第一个C++程序</span>
-</span><span class='line'><span class="c1">//</span>
-</span><span class='line'><span class="c1">//  Created by apple on 12-10-18.</span>
-</span><span class='line'><span class="c1">//  Copyright (c) 2012年 cara. All rights reserved.</span>
-</span><span class='line'><span class="c1">//</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// C++自带的标准头文件都是没有.h的</span>
-</span><span class='line'><span class="c1">// 就相当于C语言的&lt;stdio.h&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// 提前使用命名空间std</span>
-</span><span class='line'><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="c1">// cin 接收键盘的输入</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">double</span> <span class="n">height</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入年龄：&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">age</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入身高：&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">height</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;请输入姓名：&quot;</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">name</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;My age is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">age</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, height is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">height</span> <span class="o">&lt;&lt;</span>
-</span><span class='line'>    <span class="s">&quot;, name is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//    printf(&quot;请输入年龄：&quot;);</span>
-</span><span class='line'><span class="c1">//    scanf(&quot;%d&quot;, &amp;age);</span>
-</span><span class='line'><span class="c1">//    </span>
-</span><span class='line'><span class="c1">//    printf(&quot;请输入身高：&quot;);</span>
-</span><span class='line'><span class="c1">//    scanf(&quot;%lf&quot;, &amp;height);</span>
-</span><span class='line'><span class="c1">//    </span>
-</span><span class='line'><span class="c1">//    printf(&quot;请输入姓名：&quot;);</span>
-</span><span class='line'><span class="c1">//    scanf(&quot;%s&quot;, name);</span>
-</span><span class='line'><span class="c1">//    </span>
-</span><span class='line'><span class="c1">//    printf(&quot;My age is %d, height is %f, name is %s\n&quot;, age, height, name);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">void</span> <span class="nf">testCout</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="c1">// 在控制台输出一些信息</span>
-</span><span class='line'>    <span class="c1">// 相当于C语言的printf函数</span>
-</span><span class='line'>    <span class="c1">// 相当于OC的NSLog</span>
-</span><span class='line'>    <span class="c1">//    std::cout &lt;&lt; &quot;Hello, World!\n&quot;;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">// endl : end line</span>
-</span><span class='line'>    <span class="c1">// 运算符重载</span>
-</span><span class='line'>    <span class="c1">//    std::cout &lt;&lt; &quot;My age is 20&quot; &lt;&lt; &quot;, height is 1.78&quot; &lt;&lt; std::endl;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">double</span> <span class="n">height</span> <span class="o">=</span> <span class="mf">1.89</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;jack&quot;</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;My age is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">age</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, height is &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">height</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, name is &quot;</span>
-</span><span class='line'>    <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">//    printf(&quot;My age is %d, height is %f, name is %s\n&quot;, age, height, name);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">//    std::cout &lt;&lt; &quot;My age is &quot; &lt;&lt; age &lt;&lt; &quot;, height is &quot; &lt;&lt; height &lt;&lt; &quot;, name is &quot;</span>
-</span><span class='line'>    <span class="c1">//    &lt;&lt; name &lt;&lt; std::endl;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">// 命名空间</span>
-</span><span class='line'>    <span class="c1">// cout 这个 对象 是定义在 std 命名空间中的</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="c1">//    NSString *cout = @&quot;4234324&quot;;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/2">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -1269,6 +1115,10 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/21/ios32-ji-ben-zhi-shi-zong-jie-03/">Ios32-基本知识总结03</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01/">Ios30-基本知识总结01</a>
@@ -1284,10 +1134,6 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
     
       <li class="post">
         <a href="/blog/2013/07/28/04-gitde-yong-fa/">Ios 04-git的用法</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/07/26/03-blockde-yong-fa/">Ios 03-block的用法</a>
       </li>
     
   </ul>

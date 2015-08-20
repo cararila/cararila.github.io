@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://cararila.github.io/blog/2014/10/21/ios32-ji-ben-zhi-shi-zong-jie-03/</loc>
+    <lastmod>2014-10-21T14:50:25+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://cararila.github.io/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01/</loc>
     <lastmod>2014-10-21T13:15:57+08:00</lastmod>
   </url>
@@ -45,5 +49,8 @@
   </url>
   <url>
     <loc>http://cararila.github.io/</loc>
+  </url>
+  <url>
+    <loc>http://cararila.github.io/posts/2/</loc>
   </url>
 </urlset>

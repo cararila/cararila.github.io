@@ -9,59 +9,8 @@
   <meta name="author" content="QQ917314919">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53 &hellip;">
+  <meta name="description" content="在 XCode 4.0 中，我们建立一个 Mac OS X Application 类型的 Command Line Tool，在 Type 里面我们选择 Foundation 就好，工程名字暂且为 StudyBlocks.默认生成的工程代码 main.m 内容如下：
+int main (int &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -117,6 +66,77 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/21/05-block/">05-block</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-08-21T03:23:46+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>3:23 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在 XCode 4.0 中，我们建立一个 Mac OS X Application 类型的 Command Line Tool，在 Type 里面我们选择 Foundation 就好，工程名字暂且为 StudyBlocks.默认生成的工程代码 main.m 内容如下：
+int main (int argc, const char * argv[])
+{
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];</p>
+
+<pre><code>// insert code here
+NSLog(@"Hello, World!");
+
+[pool drain];
+return 0;
+</code></pre>
+
+<p>}</p>
+
+<p>2，如何编写 block
+在自动生成的工程代码中，默认打印一条语句"Hello, World!&ldquo;，这个任务可以不可以用 block 语法来实现呢？答案是肯定的，请看：
+    void (^aBlock)(void) = ^(void){ NSLog(@"Hello, World!&rdquo;); };
+    aBlock();</p>
+
+<p>用上面的这两行语句替换 main.m 中的 NSLog(@&ldquo;Hello, World!&rdquo;); 语句，编译运行，结果是一样的。
+这两行语句是什么意思呢？首先，等号左边的 void (^aBlock)(void) 表示声明了一个 block，这个 block 不带参数(void)且也无返回参数(void)；等号右边的 ^(void){ } 结构表示一个 block 的实现体，至于这个 block 具体要做的事情就都在 {} 之间了。在这里我们仅仅是打印一条语句。整个语句就是声明一个 block，并对其赋值。第二个语句就是调用这个 block 做实际的事情，就像我们调用函数一样。block 很有点像 C++0X 中的 Lambda 表达式。
+我们也可以这么写：
+    void (^aBlock)(void) = 0;
+    aBlock = ^(void) {
+        NSLog(@&ldquo;Hello, World!&rdquo;);
+    };</p>
+
+<pre><code>aBlock();
+</code></pre>
+
+<p>现在我们知道了一个 block 该如何编写了，那么 block 数组呢？也很简单，请看：
+    void (^blocks[2])(void) = {
+        ^(void){ NSLog(@&ldquo; >> This is block 1!&rdquo;); },
+        ^(void){ NSLog(@&ldquo; >> This is block 2!&rdquo;); }
+    };</p>
+
+<pre><code>blocks[0]();
+blocks[1]();
+</code></pre>
+
+<p>谨记！
+block 是分配在 stack 上的，这意味着我们必须小心里处理 block 的生命周期。
+比如如下的做法是不对的，因为 stack 分配的 block 在 if 或 else 内是有效的，但是到大括号 } 退出时就可能无效了：</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -698,6 +718,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/08/21/05-block/">05-block</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/07/21/di-er-pian-bo-ke/">01-KVC机制</a>

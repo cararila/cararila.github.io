@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>01-关于alloc和init嵌套调用 - Cara的ios</title>
+  <title>05-block - Cara的ios</title>
   <meta name="author" content="QQ917314919">
 
   
-  <meta name="description" content="1、关于alloc和init嵌套调用： 我们总是以如下方式嵌套alloc和init调用，为什么？ CExample *example1 = [[CExample alloc] init];
-而不是像下面这样调用 CExample *example2 = [CExample alloc]; [ &hellip;">
+  <meta name="description" content="在 XCode 4.0 中，我们建立一个 Mac OS X Application 类型的 Command Line Tool，在 Type 里面我们选择 Foundation 就好，工程名字暂且为 StudyBlocks.默认生成的工程代码 main.m 内容如下：
+int main (int &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://cararila.github.io/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/">
+  <link rel="canonical" href="http://cararila.github.io/blog/2013/08/21/05-block/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Cara的ios" type="application/atom+xml">
@@ -69,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">01-关于alloc和init嵌套调用</h1>
+      <h1 class="entry-title">05-block</h1>
     
     
       <p class="meta">
@@ -78,28 +78,56 @@
 
 
 
-<time class='entry-date' datetime='2013-07-16T01:45:05+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:45 am</span></time>
+<time class='entry-date' datetime='2013-08-21T03:23:46+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>3:23 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>1、关于alloc和init嵌套调用：</p>
+<div class="entry-content"><p>在 XCode 4.0 中，我们建立一个 Mac OS X Application 类型的 Command Line Tool，在 Type 里面我们选择 Foundation 就好，工程名字暂且为 StudyBlocks.默认生成的工程代码 main.m 内容如下：
+int main (int argc, const char * argv[])
+{
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];</p>
 
-<ul>
-<li><p>我们总是以如下方式嵌套alloc和init调用，为什么？</p>
+<pre><code>// insert code here
+NSLog(@"Hello, World!");
 
-<p> CExample *example1 = [[CExample alloc] init];</p></li>
-<li><p>而不是像下面这样调用</p>
+[pool drain];
+return 0;
+</code></pre>
 
-<p>   CExample *example2 = [CExample alloc];</p>
+<p>}</p>
 
-<p>   [example2 init];</p></li>
-</ul>
+<p>2，如何编写 block
+在自动生成的工程代码中，默认打印一条语句"Hello, World!&ldquo;，这个任务可以不可以用 block 语法来实现呢？答案是肯定的，请看：
+    void (^aBlock)(void) = ^(void){ NSLog(@"Hello, World!&rdquo;); };
+    aBlock();</p>
 
+<p>用上面的这两行语句替换 main.m 中的 NSLog(@&ldquo;Hello, World!&rdquo;); 语句，编译运行，结果是一样的。
+这两行语句是什么意思呢？首先，等号左边的 void (^aBlock)(void) 表示声明了一个 block，这个 block 不带参数(void)且也无返回参数(void)；等号右边的 ^(void){ } 结构表示一个 block 的实现体，至于这个 block 具体要做的事情就都在 {} 之间了。在这里我们仅仅是打印一条语句。整个语句就是声明一个 block，并对其赋值。第二个语句就是调用这个 block 做实际的事情，就像我们调用函数一样。block 很有点像 C++0X 中的 Lambda 表达式。
+我们也可以这么写：
+    void (^aBlock)(void) = 0;
+    aBlock = ^(void) {
+        NSLog(@&ldquo;Hello, World!&rdquo;);
+    };</p>
 
-<p>2、初始化（init）方法返回的对象可能与分配（alloc）的对象不同。比如类簇中的NSString和NSArray等，实际上是一群隐藏在通用接口之下的与实现相关的类，创建NSString对象时，实际获得的可能是NSLiteralString、NSCFString、NSSimpleCString、NSBallOfString或者其他未写入文档的与实现相关的对象。由于init方法可以接受参数，所以该方法的代码能够检查其接受的参数的值，并判断返回另一个类的对象可能更合适。基于这种一认知，字符串初始化函数可能决定创建一个属于其他类的对象（该对象更适合被期望的字符串的要求），然后返回该对象而不是原来的对象。</p>
+<pre><code>aBlock();
+</code></pre>
+
+<p>现在我们知道了一个 block 该如何编写了，那么 block 数组呢？也很简单，请看：
+    void (^blocks[2])(void) = {
+        ^(void){ NSLog(@&ldquo; >> This is block 1!&rdquo;); },
+        ^(void){ NSLog(@&ldquo; >> This is block 2!&rdquo;); }
+    };</p>
+
+<pre><code>blocks[0]();
+blocks[1]();
+</code></pre>
+
+<p>谨记！
+block 是分配在 stack 上的，这意味着我们必须小心里处理 block 的生命周期。
+比如如下的做法是不对的，因为 stack 分配的 block 在 if 或 else 内是有效的，但是到大括号 } 退出时就可能无效了：</p>
 </div>
 
 
@@ -115,7 +143,7 @@
 
 
 
-<time class='entry-date' datetime='2013-07-16T01:45:05+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:45 am</span></time>
+<time class='entry-date' datetime='2013-08-21T03:23:46+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2013</span></span> <span class='time'>3:23 am</span></time>
       
 
 
@@ -123,7 +151,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://cararila.github.io/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/" data-via="" data-counturl="http://cararila.github.io/blog/2013/07/16/di-%5B%3F%5D-pian-bo-ke/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://cararila.github.io/blog/2013/08/21/05-block/" data-via="" data-counturl="http://cararila.github.io/blog/2013/08/21/05-block/" >Tweet</a>
   
   
   
@@ -132,10 +160,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/06/26/03-blockde-yong-fa/" title="Previous Post: 03-block的用法">&laquo; 03-block的用法</a>
+        <a class="basic-alignment left" href="/blog/2013/07/21/di-er-pian-bo-ke/" title="Previous Post: 01-KVC机制">&laquo; 01-KVC机制</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/07/18/04-gitde-yong-fa/" title="Next Post: 04-git的用法">04-git的用法 &raquo;</a>
       
     </p>
   </footer>

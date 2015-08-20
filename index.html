@@ -123,6 +123,272 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/11/01/ios34-ji-ben-zhi-shi-zong-jie-05/">Ios34-基本知识总结05</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-01T12:33:49+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:33 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+<span class='line-number'>115</span>
+<span class='line-number'>116</span>
+<span class='line-number'>117</span>
+<span class='line-number'>118</span>
+</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#点击textField外的地方回收键盘</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">先定义一个</span><span class="bp">UIControl</span><span class="err">类型的对象，在上面可以添加触发事件，令</span><span class="kt">SEL</span><span class="err">实践为回收键盘的方法</span><span class="p">,</span><span class="err">最后将</span><span class="bp">UIControl</span><span class="err">的实例加到当前</span><span class="n">View</span><span class="err">上。</span>
+</span><span class='line'><span class="bp">UIControl</span> <span class="o">*</span><span class="n">m_control</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIControl</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">480</span><span class="p">)];</span>
+</span><span class='line'><span class="p">[</span><span class="n">m_control</span> <span class="nl">addTarget</span><span class="p">:</span><span class="nb">self</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">keyboardReturn</span><span class="p">)</span>
+</span><span class='line'><span class="nl">forControlEvents</span><span class="p">:</span><span class="n">UIControlEventTouchUpInside</span><span class="p">];</span>
+</span><span class='line'><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">m_control</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">keyboardReturn</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="p">[</span><span class="n">aTextField</span> <span class="n">resignFirstResponder</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#键盘覆盖输入框</span>
+</span><span class='line'><span class="err">当键盘调出时将输入框覆盖时，可以用下方法：</span>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">textFieldShouldBeginEditing</span><span class="p">:(</span><span class="bp">UITextField</span> <span class="o">*</span><span class="p">)</span><span class="n">textField</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">setFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">480</span><span class="p">)</span> <span class="p">];</span>
+</span><span class='line'><span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nl">textFieldShouldEndEditing</span><span class="p">:(</span><span class="bp">UITextField</span> <span class="o">*</span><span class="p">)</span><span class="n">textField</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">setFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">480</span><span class="p">)];</span>
+</span><span class='line'>  <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cp">#当准备输入时，将视图的位置上调100，这样键盘就不能覆盖到输入框。</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">当依赖注入方法不好使时，可以在</span><span class="n">AppDelegate</span><span class="err">内申明一个全局的控制器实例</span><span class="n">_anotherViewController</span><span class="err">，在另一个需要使用</span><span class="n">_anotherViewController</span><span class="err">的地方定义以下委托方法，使用共享的</span><span class="bp">UIApplication</span><span class="err">实例来获取该委托的引用</span>
+</span><span class='line'><span class="n">SomeAppDelegate</span> <span class="o">*</span><span class="n">appDelegate</span> <span class="o">=</span> <span class="p">(</span><span class="n">SomeAppDelegate</span> <span class="o">*</span><span class="p">)[[</span><span class="bp">UIApplication</span> <span class="n">sharedApplication</span><span class="p">]</span> <span class="n">delegate</span><span class="p">];</span>
+</span><span class='line'><span class="n">_anotherViewController</span> <span class="o">=</span> <span class="n">appDelegate</span><span class="p">.</span><span class="n">_anotherViewController</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="bp">UIViewController</span><span class="err">内建</span><span class="n">Table</span> <span class="n">View</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#纯代码在UIViewController控制器内建Table View</span>
+</span><span class='line'><span class="k">@interface</span> <span class="nc">RootViewController</span> : <span class="bp">UIViewController</span> <span class="o">&lt;</span><span class="bp">UITableViewDelegate</span><span class="p">,</span> <span class="bp">UITableViewDataSource</span><span class="o">&gt;</span> <span class="p">{</span>
+</span><span class='line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">timeZoneNames</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span><span class="k">retain</span><span class="p">)</span> <span class="bp">NSArray</span> <span class="o">*</span><span class="n">timeZoneNames</span><span class="p">;</span>
+</span><span class='line'><span class="k">@end</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">loadView</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="bp">UITableView</span> <span class="o">*</span><span class="n">tableView</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UITableView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:[[</span><span class="bp">UIScreen</span> <span class="n">mainScreen</span><span class="p">]</span> <span class="n">applicationFrame</span><span class="p">]]</span> <span class="nl">style</span><span class="p">:</span> <span class="n">UITableViewStylePlain</span><span class="p">];</span>
+</span><span class='line'><span class="n">tableView</span><span class="p">.</span><span class="n">autoresizingMask</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIViewAutoresizingFlexibleHeight</span> <span class="o">|</span> <span class="n">UIViewAutoresizingWidth</span><span class="p">);</span>
+</span><span class='line'><span class="n">tableView</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+</span><span class='line'><span class="n">tableView</span><span class="p">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+</span><span class='line'><span class="p">[</span><span class="n">tableView</span> <span class="n">reloadData</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="o">=</span> <span class="n">tableView</span><span class="p">;</span>
+</span><span class='line'><span class="p">[</span><span class="n">tableView</span> <span class="k">release</span><span class="p">];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#将plist文件中的数据赋给数组</span>
+</span><span class='line'><span class="bp">NSString</span> <span class="o">*</span><span class="n">thePath</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSBundle</span> <span class="n">mainBundle</span><span class="p">]</span> <span class="nl">pathForResource</span><span class="p">:</span><span class="s">@&quot;States&quot;</span> <span class="nl">ofType</span><span class="p">:</span><span class="s">@&quot;plist&quot;</span><span class="p">];</span>
+</span><span class='line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSArray</span> <span class="nl">arrayWithContentsOfFile</span><span class="p">:</span><span class="n">thePath</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="bp">UITouch</span>
+</span><span class='line'><span class="cp">#手指的触摸范围：64X64 </span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">touchesBegan</span><span class="p">:(</span><span class="bp">NSSet</span> <span class="o">*</span><span class="p">)</span> <span class="n">touches</span> <span class="nl">withEvent</span><span class="p">:(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span> <span class="n">event</span> <span class="p">{</span>
+</span><span class='line'><span class="n">originFrame</span> <span class="o">=</span> <span class="n">bookCover</span><span class="p">.</span><span class="n">frame</span><span class="p">;</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%s %d&quot;</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">,</span><span class="n">__LINE__</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">([</span><span class="n">touches</span> <span class="n">count</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">twoTouches</span> <span class="o">=</span> <span class="p">[</span><span class="n">touches</span> <span class="n">allObjects</span><span class="p">];</span>
+</span><span class='line'><span class="bp">UITouch</span> <span class="o">*</span><span class="n">firstTouch</span> <span class="o">=</span> <span class="p">[</span><span class="n">twoTouches</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'><span class="bp">UITouch</span> <span class="o">*</span><span class="n">secondTouch</span> <span class="o">=</span> <span class="p">[</span><span class="n">twoTouches</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'><span class="bp">CGPoint</span> <span class="n">firstPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">firstTouch</span> <span class="nl">locationInView</span><span class="p">:</span><span class="n">bookCover</span><span class="p">];</span>
+</span><span class='line'><span class="bp">CGPoint</span> <span class="n">secondPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">secondTouch</span> <span class="nl">locationInView</span><span class="p">:</span><span class="n">bookCover</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">CGFloat</span> <span class="n">deltaX</span> <span class="o">=</span> <span class="n">secondPoint</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">firstPoint</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span><span class='line'><span class="n">CGFloat</span> <span class="n">deltaY</span> <span class="o">=</span> <span class="n">secondPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">firstPoint</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span><span class='line'><span class="n">initialDistance</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">deltaX</span> <span class="o">*</span> <span class="n">deltaX</span> <span class="o">+</span> <span class="n">deltaY</span> <span class="o">*</span> <span class="n">deltaY</span> <span class="p">);</span>
+</span><span class='line'><span class="n">frameX</span> <span class="o">=</span> <span class="n">bookCover</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span><span class='line'><span class="n">frameY</span> <span class="o">=</span> <span class="n">bookCover</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span><span class='line'><span class="n">frameW</span> <span class="o">=</span> <span class="n">bookCover</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">;</span>
+</span><span class='line'><span class="n">frameH</span> <span class="o">=</span> <span class="n">bookCover</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">;</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%s %d&quot;</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">,</span><span class="n">__LINE__</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">touchesMoved</span><span class="p">:(</span><span class="bp">NSSet</span> <span class="o">*</span><span class="p">)</span> <span class="n">touches</span> <span class="nl">withEvent</span><span class="p">:(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span> <span class="n">event</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span><span class="p">([</span><span class="n">touches</span> <span class="n">count</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%s %d&quot;</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">,</span><span class="n">__LINE__</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="bp">NSArray</span> <span class="o">*</span><span class="n">twoTouches</span> <span class="o">=</span> <span class="p">[</span><span class="n">touches</span> <span class="n">allObjects</span><span class="p">];</span>
+</span><span class='line'><span class="bp">UITouch</span> <span class="o">*</span><span class="n">firstTouch</span> <span class="o">=</span> <span class="p">[</span><span class="n">twoTouches</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+</span><span class='line'><span class="bp">UITouch</span> <span class="o">*</span><span class="n">secondTouch</span> <span class="o">=</span> <span class="p">[</span><span class="n">twoTouches</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="mi">1</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="bp">CGPoint</span> <span class="n">firstPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">firstTouch</span> <span class="nl">locationInView</span><span class="p">:</span><span class="n">bookCover</span><span class="p">];</span>
+</span><span class='line'><span class="bp">CGPoint</span> <span class="n">secondPoint</span> <span class="o">=</span> <span class="p">[</span><span class="n">secondTouch</span> <span class="nl">locationInView</span><span class="p">:</span><span class="n">bookCover</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">CGFloat</span> <span class="n">deltaX</span> <span class="o">=</span> <span class="n">secondPoint</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">firstPoint</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+</span><span class='line'><span class="n">CGFloat</span> <span class="n">deltaY</span> <span class="o">=</span> <span class="n">secondPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">firstPoint</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+</span><span class='line'><span class="n">CGFloat</span> <span class="n">currentDistance</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">deltaX</span> <span class="o">*</span> <span class="n">deltaX</span> <span class="o">+</span> <span class="n">deltaY</span> <span class="o">*</span> <span class="n">deltaY</span> <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="n">initialDistance</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="n">initialDistance</span> <span class="o">=</span> <span class="n">currentDistance</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">currentDistance</span> <span class="o">!=</span> <span class="n">initialDistance</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="n">CGFloat</span> <span class="n">changedDistance</span> <span class="o">=</span> <span class="n">currentDistance</span> <span class="o">-</span> <span class="n">initialDistance</span><span class="p">;</span>
+</span><span class='line'><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;changedDistance = %f&quot;</span><span class="p">,</span><span class="n">changedDistance</span><span class="p">);</span>
+</span><span class='line'><span class="p">[</span><span class="n">bookCover</span> <span class="nl">setFrame</span><span class="p">:</span><span class="n">CGRectMake</span><span class="p">(</span><span class="n">frameX</span> <span class="o">-</span> <span class="n">changedDistance</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'><span class="n">frameY</span> <span class="o">-</span> <span class="p">(</span><span class="n">changedDistance</span> <span class="o">*</span> <span class="n">frameH</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">frameW</span><span class="p">),</span>
+</span><span class='line'><span class="n">frameW</span> <span class="o">+</span> <span class="n">changedDistance</span><span class="p">,</span>
+</span><span class='line'><span class="n">frameH</span> <span class="o">+</span> <span class="p">(</span><span class="n">changedDistance</span> <span class="o">*</span> <span class="n">frameH</span><span class="p">)</span> <span class="o">/</span> <span class="n">frameW</span><span class="p">)];</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">touchesEnded</span><span class="p">:(</span><span class="bp">NSSet</span> <span class="o">*</span><span class="p">)</span> <span class="n">touches</span> <span class="nl">withEvent</span><span class="p">:(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span> <span class="n">event</span> <span class="p">{</span>
+</span><span class='line'><span class="bp">UITouch</span> <span class="o">*</span><span class="n">touch</span> <span class="o">=</span> <span class="p">[</span><span class="n">touches</span> <span class="n">anyObject</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/10/28/ios33-ji-ben-zhi-shi-zong-jie-04/">Ios33-基本知识总结04</a></h1>
     
     
@@ -467,9 +733,8 @@
   </header>
 
 
-  <div class="entry-content"><p>```objc</p>
-
-<h1>定义按钮UIButton <em>scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@&ldquo;放 大&rdquo; forState:UIControlStateNormal];scaleUpButton.frame = CGRectMake(40, 420, 100, 40);[scaleUpButton addTarget:self action:@selector(scaleUp) forControlEvents:UIControlEventTouchUpInside]; #设置视图背景图片UIImageView </em>aView;[aView setImage:[UIImage imageNamed:@”name.png”]];view1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@&ldquo;image1.png&rdquo;]]; 自定义UISlider的样式和滑块我们使用的是UISlider的setMinimumTrackImage，和setMaximumTrackImage方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在 viewDidLoad中：    //左右轨的图片    UIImage <em>stetchLeftTrack= [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    UIImage </em>stetchRightTrack = [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    //滑块图片    UIImage <em>thumbImage = [UIImage imageNamed:@&ldquo;mark.png&rdquo;];        UISlider </em>sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA];  -(IBAction)sliderValueChanged:(id)sender{UISlider <em>slider = (UISlider </em>) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}```</h1>
+  <div class="entry-content"><pre><code class="objc">#定义按钮UIButton *scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@"放 大" forState:UIControlStateNormal];scaleUpButton.frame = CGRectMake(40, 420, 100, 40);[scaleUpButton addTarget:self action:@selector(scaleUp) forControlEvents:UIControlEventTouchUpInside]; #设置视图背景图片UIImageView *aView;[aView setImage:[UIImage imageNamed:@”name.png”]];view1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image1.png"]]; 自定义UISlider的样式和滑块我们使用的是UISlider的setMinimumTrackImage，和setMaximumTrackImage方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在 viewDidLoad中：    //左右轨的图片    UIImage *stetchLeftTrack= [UIImage imageNamed:@"brightness_bar.png"];    UIImage *stetchRightTrack = [UIImage imageNamed:@"brightness_bar.png"];    //滑块图片    UIImage *thumbImage = [UIImage imageNamed:@"mark.png"];        UISlider *sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA];  -(IBAction)sliderValueChanged:(id)sender{UISlider *slider = (UISlider *) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}
+</code></pre>
 </div>
   
   
@@ -600,9 +865,8 @@
   </header>
 
 
-  <div class="entry-content"><p>```objc</p>
-
-<p>退回输入键盘  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height); 设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素```</p>
+  <div class="entry-content"><pre><code class="objc">退回输入键盘  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height); 设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素
+</code></pre>
 </div>
   
   
@@ -1250,118 +1514,6 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/11/21/cyu-yan-03-extern/">C语言03-extern</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-11-21T04:04:05+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2012</span></span> <span class='time'>4:04 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-</pre></td><td class='code'><pre><code class='objc'><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
-</span><span class='line'><span class="cm">/*</span>
-</span><span class='line'><span class="cm">extern &quot;C&quot;的作用：</span>
-</span><span class='line'><span class="cm"> 1.能够实现C\C++混合编程，实现C\C++之间的函数互调</span>
-</span><span class='line'><span class="cm"> </span>
-</span><span class='line'><span class="cm"> 2.使用场合</span>
-</span><span class='line'><span class="cm"> 1&gt; 在.cpp\.cc文件中包含C语言的头文件</span>
-</span><span class='line'><span class="cm"> extern &quot;C&quot;</span>
-</span><span class='line'><span class="cm"> {</span>
-</span><span class='line'><span class="cm">    #include &quot;zs.h&quot;</span>
-</span><span class='line'><span class="cm"> }</span>
-</span><span class='line'><span class="cm"> */</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//#include &quot;zs.h&quot;</span>
-</span><span class='line'><span class="c1">//int sum(int, int); // 默认情况下，C++会认为当前函数的名称是sum(int,int)</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">// extern &quot;C&quot; 告诉编译器 按照 C语言的方式去编译函数（不会实行名字改编机制）</span>
-</span><span class='line'><span class="c1">//extern &quot;C&quot; int sum(int, int);</span>
-</span><span class='line'><span class="c1">//extern &quot;C&quot; int my_minus(int, int);</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">extern</span> <span class="s">&quot;C&quot;</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'><span class="cp">#include &quot;zs.h&quot;</span>
-</span><span class='line'><span class="c1">//    int sum(int, int);</span>
-</span><span class='line'><span class="c1">//    int my_minus(int, int);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">//    int c = sum(10, 12); // _sum</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="n">my_minus</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">c</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1377,6 +1529,10 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/11/01/ios34-ji-ben-zhi-shi-zong-jie-05/">Ios34-基本知识总结05</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/28/ios33-ji-ben-zhi-shi-zong-jie-04/">Ios33-基本知识总结04</a>
       </li>
     
@@ -1390,10 +1546,6 @@ block 是分配在 stack 上的，这意味着我们必须小心里处理 block 
     
       <li class="post">
         <a href="/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01/">Ios30-基本知识总结01</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/21/05-block/">Ios 05-block</a>
       </li>
     
   </ul>

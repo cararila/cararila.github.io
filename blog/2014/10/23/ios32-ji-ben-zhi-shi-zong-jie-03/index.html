@@ -9,7 +9,7 @@
   <meta name="author" content="QQ917314919">
 
   
-  <meta name="description" content="```objc 定义按钮UIButton scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@&ldquo;放 大&rdquo; forState: &hellip;">
+  <meta name="description" content="#定义按钮UIButton *scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@"放 大" forState:UIControlStateNormal]; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,9 +84,8 @@
   </header>
 
 
-<div class="entry-content"><p>```objc</p>
-
-<h1>定义按钮UIButton <em>scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@&ldquo;放 大&rdquo; forState:UIControlStateNormal];scaleUpButton.frame = CGRectMake(40, 420, 100, 40);[scaleUpButton addTarget:self action:@selector(scaleUp) forControlEvents:UIControlEventTouchUpInside]; #设置视图背景图片UIImageView </em>aView;[aView setImage:[UIImage imageNamed:@”name.png”]];view1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@&ldquo;image1.png&rdquo;]]; 自定义UISlider的样式和滑块我们使用的是UISlider的setMinimumTrackImage，和setMaximumTrackImage方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在 viewDidLoad中：    //左右轨的图片    UIImage <em>stetchLeftTrack= [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    UIImage </em>stetchRightTrack = [UIImage imageNamed:@&ldquo;brightness_bar.png&rdquo;];    //滑块图片    UIImage <em>thumbImage = [UIImage imageNamed:@&ldquo;mark.png&rdquo;];        UISlider </em>sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA];  -(IBAction)sliderValueChanged:(id)sender{UISlider <em>slider = (UISlider </em>) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}```</h1>
+<div class="entry-content"><pre><code class="objc">#定义按钮UIButton *scaleUpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];[scaleUpButton setTitle:@"放 大" forState:UIControlStateNormal];scaleUpButton.frame = CGRectMake(40, 420, 100, 40);[scaleUpButton addTarget:self action:@selector(scaleUp) forControlEvents:UIControlEventTouchUpInside]; #设置视图背景图片UIImageView *aView;[aView setImage:[UIImage imageNamed:@”name.png”]];view1.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"image1.png"]]; 自定义UISlider的样式和滑块我们使用的是UISlider的setMinimumTrackImage，和setMaximumTrackImage方法来定义图片的，这两个方法可以设置滑块左边和右边的图片的，不过如果用的是同一张图片且宽度和控件宽度基本一致，就不会有变形拉伸的后果，先看代码，写在 viewDidLoad中：    //左右轨的图片    UIImage *stetchLeftTrack= [UIImage imageNamed:@"brightness_bar.png"];    UIImage *stetchRightTrack = [UIImage imageNamed:@"brightness_bar.png"];    //滑块图片    UIImage *thumbImage = [UIImage imageNamed:@"mark.png"];        UISlider *sliderA=[[UISlider alloc]initWithFrame:CGRectMake(30, 320, 257, 7)];    sliderA.backgroundColor = [UIColor clearColor];    sliderA.value=1.0;    sliderA.minimumValue=0.7;    sliderA.maximumValue=1.0;        [sliderA setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];    [sliderA setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];    //注意这里要加UIControlStateHightlighted的状态，否则当拖动滑块时滑块将变成原生的控件    [sliderA setThumbImage:thumbImage forState:UIControlStateHighlighted];    [sliderA setThumbImage:thumbImage forState:UIControlStateNormal];    //滑块拖动时的事件    [sliderA addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];    //滑动拖动后的事件    [sliderA addTarget:self action:@selector(sliderDragUp:) forControlEvents:UIControlEventTouchUpInside];        [self.view addSubview:sliderA];  -(IBAction)sliderValueChanged:(id)sender{UISlider *slider = (UISlider *) sender;NSString *newText = [[NSString alloc] initWithFormat:@”%d”, (int)(slider.value + 0.5f)];label.text = newText;}
+</code></pre>
 </div>
 
 
@@ -137,6 +136,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/11/01/ios34-ji-ben-zhi-shi-zong-jie-05/">Ios34-基本知识总结05</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/28/ios33-ji-ben-zhi-shi-zong-jie-04/">Ios33-基本知识总结04</a>
       </li>
     
@@ -150,10 +153,6 @@
     
       <li class="post">
         <a href="/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01/">Ios30-基本知识总结01</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/21/05-block/">Ios 05-block</a>
       </li>
     
   </ul>

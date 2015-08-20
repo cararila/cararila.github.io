@@ -9,7 +9,7 @@
   <meta name="author" content="QQ917314919">
 
   
-  <meta name="description" content="```objc 退回输入键盘 - (BOOL) textFieldShouldReturn:(id)textField{ [textField resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, &hellip;">
+  <meta name="description" content="退回输入键盘 - (BOOL) textFieldShouldReturn:(id)textField{ [textField resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,9 +84,9 @@
   </header>
 
 
-<div class="entry-content"><p>```objc</p>
-
-<p>退回输入键盘  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height); 设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素```</p>
+<div class="entry-content"><pre><code class="objc">
+退回输入键盘  - (BOOL) textFieldShouldReturn:(id)textField{    [textField  resignFirstResponder];} CGRectCGRect frame = CGRectMake (origin.x, origin.y, size.width, size.height)；矩形NSStringFromCGRect(someCG) 把CGRect结构转变为格式化字符串；CGRectFromString(aString) 由字符串恢复出矩形；CGRectInset(aRect) 创建较小或较大的矩形（中心点相同），＋较小  －较大CGRectIntersectsRect(rect1, rect2) 判断两矩形是否交叉，是否重叠CGRectZero 高度和宽度为零的／位于（0，0）的矩形常量 CGPoint &amp; CGSizeCGPoint aPoint = CGPointMake(x, y);    CGSize aSize = CGSizeMake(width, height); 设置透明度[myView setAlpha:value];   (0.0 &lt; value &lt; 1.0)设置背景色 [myView setBackgroundColor:[UIColor redColor]];  (blackColor;darkGrayColor;lightGrayColor;whiteColor;grayColor; redColor; greenColor; blueColor; cyanColor;yellowColor;magentaColor;orangeColor;purpleColor;brownColor; clearColor; )自定义颜色UIColor *newColor = [[UIColor alloc] initWithRed:(float) green:(float) blue:(float) alpha:(float)];      0.0~1.0竖屏320X480横屏480X320    状态栏高 (显示时间和网络状态)20 像素   导航栏、工具栏高(返回)44像素
+</code></pre>
 </div>
 
 
@@ -119,7 +119,7 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/" title="Previous Post: ios31-基本知识总结02">&laquo; ios31-基本知识总结02</a>
+        <a class="basic-alignment left" href="/blog/2013/08/21/05-block/" title="Previous Post: ios 05-block">&laquo; ios 05-block</a>
       
       
         <a class="basic-alignment right" href="/blog/2014/10/21/ios32-ji-ben-zhi-shi-zong-jie-03/" title="Next Post: ios32-基本知识总结03">ios32-基本知识总结03 &raquo;</a>
@@ -137,15 +137,15 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/10/22/ios30-ji-ben-zhi-shi-zong-jie-02/">Ios31-基本知识总结02</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/21/ios32-ji-ben-zhi-shi-zong-jie-03/">Ios32-基本知识总结03</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/10/21/ios30-ji-ben-zhi-shi-zong-jie-01/">Ios30-基本知识总结01</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/08/22/ios30-ji-ben-zhi-shi-zong-jie-02/">Ios31-基本知识总结02</a>
       </li>
     
       <li class="post">
